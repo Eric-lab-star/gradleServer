@@ -8,8 +8,6 @@ public class App {
     public static void main(String[] args) {
         var ctx = SpringApplication.run(App.class, args);
         MyService service = ctx.getBean(MyService.class);
-        System.out.println(service.HellofromService());
-        System.out.println(service.getMyName());
-        System.out.println(service.getGreeting());
+        System.out.println(service.getMyname());
     }
 }
