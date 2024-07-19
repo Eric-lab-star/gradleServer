@@ -4,8 +4,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AppConfig {
-  @Bean("myBean")
+  @Bean
   public Hello greeting() {
-    return new Hello();
+    return new Hello("world");
   }
 }

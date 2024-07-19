@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class App {
   public static void main(String[] args) {
     var ctx = SpringApplication.run(App.class, args);
-    Hello grt = ctx.getBean("myBean", Hello.class);
-    System.out.println(grt.say());
+    MyService grt = ctx.getBean(MyService.class);
+    System.out.println(grt.HellofromService());
   }
 }
