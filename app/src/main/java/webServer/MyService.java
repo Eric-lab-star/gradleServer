@@ -1,6 +1,5 @@
 package webServer;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -8,7 +7,7 @@ import org.springframework.stereotype.Service;
 public class MyService {
     private final Hello hello;
 
-    public MyService(@Qualifier("myBean") Hello hello) {
+    public MyService(Hello hello) {
         this.hello = hello;
     }
 
@@ -17,5 +16,9 @@ public class MyService {
 
     public String getMyname() {
         return myname;
+    }
+
+    public String getHello() {
+        return hello.say();
     }
 }
