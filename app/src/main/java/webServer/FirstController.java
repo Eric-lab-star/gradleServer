@@ -25,4 +25,10 @@ public class FirstController {
 				) {
 			return order.toString();
 		}
+		@PostMapping("/post-record")
+		public String postRecord(
+				@RequestBody OrderRecord o
+				) {
+			return o.toString();
+		}
 }
