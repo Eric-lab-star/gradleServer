@@ -7,7 +7,8 @@
 
 plugins {
     java
-    id("org.springframework.boot") version "3.3.1"
+    id("org.springframework.boot") version "3.3.2"
+    id("io.spring.dependency-management") version "1.1.6"
 }
 
 repositories {
@@ -16,14 +17,15 @@ repositories {
 }
 
 dependencies {
-    implementation(libs.spring.boot.starter.web)
-    // Use JUnit Jupiter for testing.
-    testImplementation(libs.junit.jupiter)
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    runtimeOnly("com.h2database:h2")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+    implementation(libs.psql)
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-    // This dependency is used by the application.
-    implementation(libs.guava)
     developmentOnly(libs.spring.boot.devtools)
 }
 
