@@ -41,7 +41,6 @@ public class Student {
 	)
 	private School school;
 
-
     public Student(
 		String lastname,
 		String firstname,
