@@ -1,7 +1,10 @@
 package webServer;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,10 +16,15 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class School {
-    @Id
+	@Id
     @GeneratedValue
 	private	Integer	id;
 	private	String	name;
+
+	@OneToMany(
+		mappedBy = "school"
+	)
+	private List<Student> students;
     public  School(
 		String  name,
 		Integer id
