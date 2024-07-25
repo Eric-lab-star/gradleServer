@@ -9,7 +9,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class Config {
     @Bean
-    public Mock mock(StudentRepository studentRepository) {
-	return new Mock(studentRepository);
+    public Mock mock(
+		StudentRepository studentRepository,
+		SchoolRepository schoolRepository
+	) {
+		return new Mock(studentRepository, schoolRepository);
     }
 }

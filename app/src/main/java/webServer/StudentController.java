@@ -20,23 +20,28 @@ public class StudentController {
     }
 
     @PostMapping("/students")
-    public Student post(
-		@RequestBody Student student
+    public StudentResponseDto post(
+		@RequestBody StudentDto studentDto
     ) {
-		// Student student = toStudent(studentDto);
-		return studentRepository.save(student);
+		Student student = toStudent(studentDto);
+		Student saved = studentRepository.save(student);
+		return new StudentResponseDto(
+				saved.getFirstName(),
+				saved.getLastName(),
+				saved.getEmail()
+				);
     }
 
-	// private Student toStudent(StudentDto dto) {
-	// 	Student st = new Student();
-	// 	st.setFirstName(dto.firstName());
-	// 	st.setLastName(dto.lastName());
-	// 	st.setEmail(dto.email());
-	// 	School school = new School();
-	// 	school.setId(dto.schoolId());
-	// 	st.setSchool(school);
-	// 	return st;
-	// }
+	private Student toStudent(StudentDto dto) {
+		Student st = new Student();
+		st.setFirstName(dto.firstName());
+		st.setLastName(dto.lastName());
+		st.setEmail(dto.email());
+		School school = new School();
+		school.setId(dto.schoolId());
+		st.setSchool(school);
+		return st;
+	}
 
     @GetMapping("/students")
     public List<Student> findAll() {
