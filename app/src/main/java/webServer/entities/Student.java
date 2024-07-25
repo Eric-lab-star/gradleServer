@@ -1,4 +1,4 @@
-package webServer;
+package webServer.entities;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -11,6 +11,7 @@ import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import webServer.dtos.StudentResponseDto;
 
 @Entity
 @Getter
@@ -52,5 +53,15 @@ public class Student {
 		this.email     = email;
 		this.age       = age;
     }
+
+	public StudentResponseDto toDto(){
+		return new StudentResponseDto(
+			this.id,
+			this.lastName,
+			this.firstName,
+			this.email,
+			this.school.getId()
+		);
+	}
 
 }
