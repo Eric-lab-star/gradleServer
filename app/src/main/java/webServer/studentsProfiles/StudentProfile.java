@@ -26,7 +26,9 @@ public class StudentProfile {
     private	String	bio;
 
 	@OneToOne
-	@JoinColumn(name = "student_id")
+	@JoinColumn(
+		name = "student_id"
+	)
 	private	Student	student;
 
     public StudentProfile(String bio) {

@@ -1,6 +1,5 @@
 package webServer.students;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,8 +31,7 @@ public class Student {
     private	int	age;
 
 	@OneToOne(
-		mappedBy = "student", // this "student" must excatly math the field name in StudentProfile.java
-		cascade  = CascadeType.ALL
+		mappedBy = "student"
 	)
 	private StudentProfile studentProfile;
 
@@ -54,15 +52,5 @@ public class Student {
 		this.email     = email;
 		this.age       = age;
     }
-
-	public StudentResponseDto toDto(){
-		return new StudentResponseDto(
-			this.id,
-			this.lastName,
-			this.firstName,
-			this.email,
-			this.school.getId()
-		);
-	}
-
+	
 }

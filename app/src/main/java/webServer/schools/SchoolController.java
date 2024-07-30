@@ -1,7 +1,6 @@
 package webServer.schools;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,35 +13,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SchoolController {
 
-	private final SchoolRepository schoolRepository;
-
-	public SchoolController(
-		SchoolRepository schoolRepository
-	) {
-		this.schoolRepository = schoolRepository;
+	private final SchoolService service;
+	public SchoolController(SchoolService service) {
+		this.service = service;
+	}
+	@GetMapping("/schools")
+	public List<SchoolResponseDto> get() {
+		return service.get();
 	}
 
 	@PostMapping("/schools")
-	public SchoolResponseDto createSchool(
-		@RequestBody SchoolDto schoolDto
+	public SchoolResponseDto post(
+		@RequestBody SchoolDto dto
 	) {
-		School school = schoolDto.toSchool();
-		School saved = schoolRepository.save(school);
-		SchoolResponseDto response = 
-			new SchoolResponseDto(
-					saved.getId(),
-					saved.getName(),
-					null
-				);
-		return response;
+		return service.post(dto);
 	}
 
-	@GetMapping("/schools")
-	public List<SchoolResponseDto> findAll() {
-		List<School> schools = schoolRepository.findAll();
-		return schools.stream()
-					.map(school -> school.toDto())
-					.collect(Collectors.toList());
-	}
-	
+
 }

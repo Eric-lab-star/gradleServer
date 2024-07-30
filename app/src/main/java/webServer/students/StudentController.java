@@ -1,6 +1,5 @@
 package webServer.students;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,60 +13,42 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class StudentController {
 
-    private final StudentRepository studentRepository;
-
-    public StudentController(StudentRepository studentRepository) {
-	this.studentRepository = studentRepository;
-    }
+	private final StudentService studentService;
+	public StudentController(StudentService studentService) {
+		this.studentService = studentService;
+	}
 
     @PostMapping("/students")
     public StudentResponseDto post(
 		@RequestBody StudentDto studentDto
     ) {
-		Student st = studentDto.toStudent();
-		Student saved = studentRepository.save(st);
-		StudentResponseDto response = new StudentResponseDto(
-			saved.getId(),
-			saved.getFirstName(),
-			saved.getLastName(),
-			saved.getEmail(),
-			saved.getSchool().getId()
-		);
-		return response;
+		return studentService.post(studentDto);
     }
 
     @GetMapping("/students")
     public List<StudentResponseDto> findAll() {
-		List<Student> students = studentRepository.findAll();
-		List<StudentResponseDto> studentDtos = new ArrayList<StudentResponseDto>();
-		for(Student student: students){
-			studentDtos.add(student.toDto());
-		}
-		return studentDtos;
+		return studentService.findAll();
     }
 
     @GetMapping("/students/{id}")
-    public Student findStudentById(
+    public StudentResponseDto findStudentById(
 		@PathVariable Integer id
     ) {
-		return studentRepository
-			.findById(id)
-			.orElse(new Student());
+		return studentService.findStudentById(id);
     }
 
     @GetMapping("/students/search/{name}")
-    public List<Student> findStudentByName(
+    public List<StudentResponseDto> findStudentByName(
 		@PathVariable String name
     ) {
-		return studentRepository.findAllByFirstNameContaining(name);
+		return studentService.findStudentByName(name);
     }
 
     @DeleteMapping("/students/{id}")
     public String deleteById(
-	@PathVariable Integer id
+		@PathVariable Integer id
     ) {
-	studentRepository.deleteById(id);
-	return "Deleted: " + id;
+		return studentService.deleteById(id);
     }
 
 }
