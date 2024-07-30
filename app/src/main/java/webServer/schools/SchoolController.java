@@ -1,17 +1,12 @@
-package webServer.controllers;
+package webServer.schools;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import webServer.dtos.SchoolDto;
-import webServer.dtos.SchoolResponseDto;
-import webServer.entities.School;
-import webServer.repos.SchoolRepository;
 
 /**
  * SchoolController
@@ -45,12 +40,9 @@ public class SchoolController {
 	@GetMapping("/schools")
 	public List<SchoolResponseDto> findAll() {
 		List<School> schools = schoolRepository.findAll();
-		List<SchoolResponseDto> schoolDtos = new ArrayList<SchoolResponseDto>();
-
-		for (School school: schools){
-			schoolDtos.add(school.toDto());
-		}
-		return schoolDtos;
+		return schools.stream()
+					.map(school -> school.toDto())
+					.collect(Collectors.toList());
 	}
 	
 }

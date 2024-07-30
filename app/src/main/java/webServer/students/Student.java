@@ -1,4 +1,4 @@
-package webServer.entities;
+package webServer.students;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -11,7 +11,8 @@ import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import webServer.dtos.StudentResponseDto;
+import webServer.schools.School;
+import webServer.studentsProfiles.StudentProfile;
 
 @Entity
 @Getter

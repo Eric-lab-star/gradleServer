@@ -1,7 +1,6 @@
-package webServer.dtos;
+package webServer.students;
 
-import webServer.entities.School;
-import webServer.entities.Student;
+import webServer.schools.School;
 
 /**
  * StudentDto

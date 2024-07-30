@@ -1,6 +1,6 @@
-package webServer.entities;
-import java.util.ArrayList;
+package webServer.schools;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,8 +9,8 @@ import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import webServer.dtos.SchoolResponseDto;
-import webServer.dtos.StudentResponseDto;
+import webServer.students.Student;
+import webServer.students.StudentResponseDto;
 /**
  * School
  * @Param id
@@ -40,14 +40,14 @@ public class School {
     }
 
 	public SchoolResponseDto toDto(){
-		List<StudentResponseDto> studentDtos = new ArrayList<StudentResponseDto>();
-		for(Student student: this.students){
-			studentDtos.add(student.toDto());
-		}
+		List<StudentResponseDto> students 
+				= this.students.stream()
+								.map(student -> student.toDto())
+								.collect(Collectors.toList());
 		return new SchoolResponseDto(
 			this.id,
 			this.name,
-			studentDtos
+			students
 		);
 	}
 }

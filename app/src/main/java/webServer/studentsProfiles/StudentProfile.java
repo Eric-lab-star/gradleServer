@@ -1,4 +1,4 @@
-package webServer.entities;
+package webServer.studentsProfiles;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,6 +8,7 @@ import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import webServer.students.Student;
 
 /**
  * StudentProfile

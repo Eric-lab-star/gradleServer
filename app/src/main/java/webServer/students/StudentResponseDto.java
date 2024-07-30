@@ -1,4 +1,4 @@
-package webServer.dtos;
+package webServer.students;
 
 /**
  * StudentResponseDto
