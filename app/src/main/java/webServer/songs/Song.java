@@ -2,6 +2,7 @@ package webServer.songs;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
@@ -18,7 +19,9 @@ import webServer.singer.Singer;
 @NoArgsConstructor
 public class Song {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(
+		strategy = GenerationType.IDENTITY
+	)
 	private Integer id;
 
 	private String title;
