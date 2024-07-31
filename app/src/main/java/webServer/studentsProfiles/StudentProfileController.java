@@ -19,7 +19,7 @@ public class StudentProfileController {
 	}
 
 	@GetMapping("/studentProfiles")
-	public List<StudentProfile>get(){
+	public List<StudentProfileResponseDto>get(){
 		return service.get();
 	}
 

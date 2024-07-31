@@ -19,4 +19,15 @@ public class StudentProfileMapper {
 		profile.setStudent(std);
 		return profile;
 	}
+	public StudentProfileResponseDto toResponseDto(
+			StudentProfile profile
+	){
+		StudentProfileResponseDto dto =
+			new StudentProfileResponseDto(
+					profile.getId(),
+					profile.getBio()
+			);
+		return dto;
+
+	}
 }

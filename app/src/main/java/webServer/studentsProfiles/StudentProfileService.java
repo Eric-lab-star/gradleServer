@@ -1,6 +1,7 @@
 package webServer.studentsProfiles;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -20,9 +21,15 @@ public class StudentProfileService {
 		this.studentProfileMapper = studentProfileMapper;
 	}
 
-	public List<StudentProfile> get(){
+	public List<StudentProfileResponseDto> get(){
 		List<StudentProfile> profiles = studentprofileRepository.findAll();
-		return profiles;
+		List<StudentProfileResponseDto> response = 
+			profiles
+			.stream()
+			.map(profile -> studentProfileMapper.toResponseDto(profile))
+			.collect(Collectors.toList());
+
+		return response;
 	}
 
 	public StudentProfile post(
