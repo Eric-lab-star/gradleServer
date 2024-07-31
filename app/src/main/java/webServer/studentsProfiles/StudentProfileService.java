@@ -32,11 +32,11 @@ public class StudentProfileService {
 		return response;
 	}
 
-	public StudentProfile post(
+	public StudentProfileDto post(
 		StudentProfileDto profileDto
 	){
 		StudentProfile profile = studentProfileMapper.toStudendtProfile(profileDto);  
-		StudentProfile newProfile = studentprofileRepository.save(profile);
-		return newProfile;
+		studentprofileRepository.save(profile);
+		return profileDto;
 	}
 }

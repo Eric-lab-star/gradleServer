@@ -10,7 +10,7 @@ import webServer.students.Student;
 @Service
 public class StudentProfileMapper {
 	public StudentProfile toStudendtProfile(
-			StudentProfileDto dto
+		StudentProfileDto dto
 	){
 		StudentProfile profile = new StudentProfile();
 		Student std = new Student();
@@ -19,13 +19,14 @@ public class StudentProfileMapper {
 		profile.setStudent(std);
 		return profile;
 	}
+
 	public StudentProfileResponseDto toResponseDto(
-			StudentProfile profile
+		StudentProfile profile
 	){
 		StudentProfileResponseDto dto =
 			new StudentProfileResponseDto(
-					profile.getId(),
-					profile.getBio()
+				profile.getId(),
+				profile.getBio()
 			);
 		return dto;
 
