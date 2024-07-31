@@ -1,6 +1,5 @@
 package webServer.students;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -22,11 +21,9 @@ public class Student {
     @GeneratedValue
     private Integer id;
 
-    @Column(length = 200)
     private	String	lastName;
     private	String	firstName;
 
-    @Column(unique = true)
     private	String	email;
     private	int	age;
 

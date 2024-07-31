@@ -25,7 +25,7 @@ public class StudentProfileController {
 
 	@PostMapping("/studentProfiles")
 	public StudentProfile post(
-		@RequestBody StudentProfile profile
+		@RequestBody StudentProfileDto profile
 	){
 		return service.post(profile);
 	}

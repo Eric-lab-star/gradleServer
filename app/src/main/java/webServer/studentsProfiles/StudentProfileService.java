@@ -10,11 +10,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class StudentProfileService {
 	private final StudentProfileRepository studentprofileRepository;
+	private final StudentProfileMapper studentProfileMapper;
 
 	public StudentProfileService(
-		StudentProfileRepository studentprofileRepository
+		StudentProfileRepository studentprofileRepository,
+		StudentProfileMapper studentProfileMapper
 	) {
 		this.studentprofileRepository = studentprofileRepository;
+		this.studentProfileMapper = studentProfileMapper;
 	}
 
 	public List<StudentProfile> get(){
@@ -22,7 +25,10 @@ public class StudentProfileService {
 		return profiles;
 	}
 
-	public StudentProfile post(StudentProfile profile){
+	public StudentProfile post(
+		StudentProfileDto profileDto
+	){
+		StudentProfile profile = studentProfileMapper.toStudendtProfile(profileDto);  
 		StudentProfile newProfile = studentprofileRepository.save(profile);
 		return newProfile;
 	}

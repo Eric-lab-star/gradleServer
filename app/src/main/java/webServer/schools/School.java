@@ -28,7 +28,7 @@ public class School {
 	private	String	name;
 
 	@OneToMany(
-		mappedBy = "school"
+		mappedBy = "school" // bidirectional mapping
 	)
 	private List<Student> students;
 
