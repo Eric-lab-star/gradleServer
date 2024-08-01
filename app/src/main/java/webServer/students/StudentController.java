@@ -13,42 +13,44 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class StudentController {
 
-	private final StudentService studentService;
-	public StudentController(StudentService studentService) {
-		this.studentService = studentService;
-	}
+    private final StudentService studentService;
+
+    public StudentController(
+			StudentService studentService
+		) {
+      this.studentService = studentService;
+    }
 
     @PostMapping("/students")
     public StudentResponseDto post(
-		@RequestBody StudentDto studentDto
-    ) {
-		return studentService.post(studentDto);
+			@RequestBody StudentDto studentDto
+		) {
+      return studentService.post(studentDto);
     }
 
     @GetMapping("/students")
     public List<StudentResponseDto> findAll() {
-		return studentService.findAll();
+			return studentService.findAll();
     }
 
     @GetMapping("/students/{id}")
     public StudentResponseDto findStudentById(
-		@PathVariable Integer id
-    ) {
-		return studentService.findStudentById(id);
+			@PathVariable Integer id
+		) {
+			return studentService.findStudentById(id);
     }
 
     @GetMapping("/students/search/{name}")
     public List<StudentResponseDto> findStudentByName(
-		@PathVariable String name
-    ) {
-		return studentService.findStudentByName(name);
+			@PathVariable String name
+		) {
+      return studentService.findStudentByName(name);
     }
 
     @DeleteMapping("/students/{id}")
     public String deleteById(
-		@PathVariable Integer id
-    ) {
-		return studentService.deleteById(id);
+			@PathVariable Integer id
+		) {
+      return studentService.deleteById(id);
     }
-
 }

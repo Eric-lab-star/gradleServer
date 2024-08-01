@@ -1,13 +1,17 @@
 package webServer.students;
 
+import jakarta.validation.constraints.NotEmpty;
+
 /**
  * StudentDto
  */
 public record StudentDto(
-	String  lastName,
-	String  firstName,
-	String  email,
-	Integer age,
-	Integer schoolId
+		@NotEmpty
+		String  firstName,
+		@NotEmpty
+		String  lastName,
+		String  email,
+		Integer age,
+		Integer schoolId
 ) {
 }

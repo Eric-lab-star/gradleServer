@@ -4,44 +4,42 @@ import org.springframework.stereotype.Service;
 
 import webServer.schools.School;
 
-/**
- * StudentMapper
- */
+/** StudentMapper */
 @Service
 public class StudentMapper {
 
-
-	public StudentSchoolResponseDto toStudentListForSchool(Student std){
+	public StudentSchoolResponseDto toStudentListForSchool(Student student) {
 		return new StudentSchoolResponseDto(
-			std.getId(),
-			std.getFirstName(),
-			std.getLastName(),
-			std.getEmail(),
-			std.getAge()
-		);
-	}
+					student.getId(),
+					student.getFirstName(),
+					student.getLastName(),
+					student.getEmail(),
+					student.getAge()
+				);
+    }
 
-	public StudentResponseDto toDto(Student student) {
+    public StudentResponseDto toDto(Student student) {
 		return new StudentResponseDto(
-			student.getId(),
-			student.getFirstName(),
-			student.getLastName(),
-			student.getEmail(),
-			student.getAge(),
-			student.getSchool().getId()
-		);
-	}
+					student.getId(),
+					student.getFirstName(),
+					student.getLastName(),
+					student.getEmail(),
+					student.getAge(),
+					student.getSchool().getId()
+				);
+    }
 
-	public Student toStudent(StudentDto dto){
-		School sch = new School();
-		sch.setId(dto.schoolId());
-		Student st = new Student(
-			dto.firstName(),
-			dto.lastName(),
-			dto.email(),
-			dto.age()
-		);
-		st.setSchool(sch);
-		return st;
-	}
+    public Student toStudent(StudentDto studentDto) {
+        School sch = new School();
+        sch.setId(studentDto.schoolId());
+        Student st = 
+			new Student(
+				studentDto.firstName(),
+				studentDto.lastName(),
+				studentDto.email(),
+				studentDto.age()
+			);
+        st.setSchool(sch);
+        return st;
+    }
 }
