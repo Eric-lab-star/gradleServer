@@ -6,12 +6,16 @@ import jakarta.validation.constraints.NotEmpty;
  * StudentDto
  */
 public record StudentDto(
-		@NotEmpty
-		String  firstName,
-		@NotEmpty
-		String  lastName,
-		String  email,
-		Integer age,
-		Integer schoolId
+	@NotEmpty(
+		message = "First name is required"
+	)
+	String  firstName,
+	@NotEmpty(
+		message = "Last name is required"
+	)
+	String  lastName,
+	String  email,
+	Integer age,
+	Integer schoolId
 ) {
 }
