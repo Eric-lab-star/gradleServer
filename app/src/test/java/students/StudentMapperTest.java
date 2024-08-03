@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import webServer.students.Student;
 import webServer.students.StudentDto;
 import webServer.students.StudentMapper;
+import webServer.students.StudentResponseDto;
 
 /**
  * StudentMappterTest
@@ -31,10 +32,26 @@ public class StudentMapperTest {
 		assertEquals(dto.lastName(), student.getLastName());
 		assertEquals(dto.email(), student.getEmail());
 		assertEquals(dto.age(), student.getAge());
-
-		// assert school to be not null
 		assertNotNull(student.getSchool());
 		assertEquals(dto.schoolId(), student.getSchool().getId());
+	}
+
+	@Test
+	public void shouldMapStudentToStudentResponseDto(){
+		Student student =
+			new Student(
+				"Alice",
+				"Green",
+				"aliceisgreen@email.com",
+				12
+			);
+    	StudentResponseDto dto = studentMapper.toDto(student);
+		assertEquals(dto.firstName(), student.getFirstName());
+		assertEquals(dto.lastName(), student.getLastName());
+		assertEquals(dto.email(), student.getEmail());
+		assertEquals(dto.age(), student.getAge());
+
+
 	}
 
 }
