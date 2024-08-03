@@ -41,15 +41,14 @@ public class Student {
 	)
 	private School school;
     public Student(
-			String lastname,
-			String firstname,
-			String email,
-			int    age
+		String firstname,
+		String lastname,
+		String email,
+		int    age
     ) {
-			this.lastName  = lastname;
-			this.firstName = firstname;
-			this.email     = email;
-			this.age       = age;
+		this.lastName  = lastname;
+		this.firstName = firstname;
+		this.email     = email;
+		this.age       = age;
     }
-	
 }
