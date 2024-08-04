@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import webServer.schools.School;
 import webServer.students.Student;
 import webServer.students.StudentDto;
 import webServer.students.StudentMapper;
@@ -38,6 +39,8 @@ public class StudentMapperTest {
 
 	@Test
 	public void shouldMapStudentToStudentResponseDto(){
+		School school = new School("high school");
+		school.setId(1);
 		Student student =
 			new Student(
 				"Alice",
@@ -45,13 +48,12 @@ public class StudentMapperTest {
 				"aliceisgreen@email.com",
 				12
 			);
+		student.setSchool(school);
     	StudentResponseDto dto = studentMapper.toDto(student);
 		assertEquals(dto.firstName(), student.getFirstName());
 		assertEquals(dto.lastName(), student.getLastName());
 		assertEquals(dto.email(), student.getEmail());
 		assertEquals(dto.age(), student.getAge());
-
-
+		assertEquals(dto.schoolId(), student.getSchool().getId());
 	}
-
 }

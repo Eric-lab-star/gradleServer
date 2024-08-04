@@ -28,7 +28,8 @@ public class StudentService {
     ) {
 		Student std = studentMapper.toStudent(studentDto);
 		Student saved = studentRepository.save(std);
-		return studentMapper.toDto(saved);
+		StudentResponseDto	response = studentMapper.toDto(saved);
+		return response;
     }
 
     public List<StudentResponseDto> findAll() {

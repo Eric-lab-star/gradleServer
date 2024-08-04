@@ -3,8 +3,11 @@ package webServer.students;
 import org.springframework.stereotype.Service;
 
 import webServer.schools.School;
-
-/** StudentMapper */
+/**
+ * This is a service class for mapping between Student and StudentDto objects.
+ * It provides methods to convert from Student to StudentDto and vice versa.
+ * It also provides a method to convert from Student to StudentSchoolResponseDto.
+ */
 @Service
 public class StudentMapper {
 
@@ -19,6 +22,7 @@ public class StudentMapper {
     }
 
     public StudentResponseDto toDto(Student student) {
+		System.out.println(student);
 		return new StudentResponseDto(
 					student.getId(),
 					student.getFirstName(),
